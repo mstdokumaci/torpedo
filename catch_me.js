@@ -71,7 +71,7 @@ function catch_time (x, y, vx, vy, v) {
 	return time;
 }
 
-function quad(a, b, c) {
+function quad (a, b, c) {
 	var sol = null;
 
 	if (Math.abs(a) < 1e-6) {

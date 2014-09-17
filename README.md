@@ -1,7 +1,7 @@
 torpedo
 =======
 
-While we are on location A, we start moving with contsant speed of S, trying to catch an object moving with constant speed from location B to location C. The target object is going to arrive location C at the time of T. If we are not fast enough, we won't be able to catch it before reaching destination.
+We start moving with contsant speed of S from location A, in order to catch a moving object with constant speed from location B to location C. The target object is going to arrive location C at the time of T. We won't be able to catch it before reaching destination if we are not fast enough.
 
 ## How to install
 ```sh

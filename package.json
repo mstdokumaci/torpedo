@@ -5,7 +5,7 @@
     "url": "http://mustafadokumaci.com"
   },
   "name": "torpedo",
-  "description": "calculates location of catching for a moving object on earth.",
+  "description": "calculates location of impact for a torpedo after a moving object",
   "main": "./catch_me",
   "version": "0.0.1",
   "keywords": [

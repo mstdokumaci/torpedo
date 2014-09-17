@@ -1,28 +1,7 @@
 
 var turf = require('turf');
 
-exports.calculate_distance_in_km = function distance_in_km (location1, location2) {
-	var point1 = turf.point(location1.longitude, location1.latitude);
-	var point2 = turf.point(location2.longitude, location2.latitude);
-
-	return turf.distance(point1, point2, 'kilometers');
-};
-
-exports.find_midpoint_location = function midpoint_location (from_location, to_location, distance) {
-	var point1 = turf.point(from_location.longitude, from_location.latitude);
-	var point2 = turf.point(to_location.longitude, to_location.latitude);
-
-	var bearing = turf.bearing(point1, point2);
-
-	var destination = turf.destination(point1, distance, bearing, 'kilometers');
-
-	return {
-		longitude: destination.geometry.coordinates[0],
-		latitude: destination.geometry.coordinates[1]
-	};
-};
-
-exports.catches_at = function catches_at (target_location, dest_location, dest_time, source_location, source_speed) {
+exports.catches_at = function (target_location, dest_location, dest_time, source_location, source_speed) {
 	var tlon_slat = {latitude: source_location.latitude, longitude: target_location.longitude};
 	var tlat_slon = {latitude: target_location.latitude, longitude: source_location.longitude};
 
@@ -52,6 +31,29 @@ exports.catches_at = function catches_at (target_location, dest_location, dest_t
 
 	return t && t < j_time ? midpoint_location(target_location, dest_location, j_dist * t / j_time) : null;
 };
+
+function distance_in_km (location1, location2) {
+	var point1 = turf.point(location1.longitude, location1.latitude);
+	var point2 = turf.point(location2.longitude, location2.latitude);
+
+	return turf.distance(point1, point2, 'kilometers');
+}
+exports.calculate_distance_in_km = distance_in_km;
+
+function midpoint_location (from_location, to_location, distance) {
+	var point1 = turf.point(from_location.longitude, from_location.latitude);
+	var point2 = turf.point(to_location.longitude, to_location.latitude);
+
+	var bearing = turf.bearing(point1, point2);
+
+	var destination = turf.destination(point1, distance, bearing, 'kilometers');
+
+	return {
+		longitude: destination.geometry.coordinates[0],
+		latitude: destination.geometry.coordinates[1]
+	};
+}
+exports.find_midpoint_location = midpoint_location;
 
 function catch_time (x, y, vx, vy, v) {
 	var a = vx * vx + vy * vy - v * v;

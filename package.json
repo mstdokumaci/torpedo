@@ -7,7 +7,7 @@
   "name": "torpedo",
   "description": "calculates location of impact for a torpedo after a moving object",
   "main": "./catch_me",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "keywords": [
     "location",
     "distance",

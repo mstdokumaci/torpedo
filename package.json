@@ -1,0 +1,25 @@
+{
+  "author": {
+    "name": "Mustafa Dokumacı",
+    "email": "mustafa@foraa.com",
+    "url": "http://mustafadokumaci.com"
+  },
+  "name": "torpedo",
+  "description": "calculates location of catching for a moving object on earth.",
+  "main": "./catch_me",
+  "version": "0.0.1",
+  "keywords": [
+    "location",
+    "distance",
+    "catch"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mstdokumaci/torpedo"
+  },
+  "homepage": "https://github.com/mstdokumaci/torpedo",
+  "dependencies": {
+    "turf": "0.4.3"
+  },
+  "license": "GPL v2"
+}

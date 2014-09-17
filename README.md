@@ -9,7 +9,7 @@ If we are able to catch the target object, function returns the impact location;
 catches_at(
   {longitude: 29.049588, latitude: 40.976345}, // target location (B)
   {longitude: 29.021666, latitude: 41.026785}, // destination location (C)
-  +new Date() + 3600 * 1000, // destination reaching time (T - unix timestamp in microseconds)
+  +new Date() + 3600 * 1000, // destination reaching time (T - GMT timestamp in microseconds)
   {longitude: 29.060103, latitude: 41.001693}, // source location (A)
   4 // source speed (S - km / h)
 );

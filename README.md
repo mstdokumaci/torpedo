@@ -6,7 +6,9 @@ While we are on location A, we start moving with contsant speed of S, trying to 
 ## How to use
 If we are able to catch the target object, function returns the impact location; otherwise it returns null.
 ```js
-catches_at(
+var torpedo = require('torpedo');
+
+torpedo.catches_at(
   {longitude: 29.049588, latitude: 40.976345}, // target location (B)
   {longitude: 29.021666, latitude: 41.026785}, // destination location (C)
   +new Date() + 3600 * 1000, // destination reaching time (T - GMT timestamp in microseconds)

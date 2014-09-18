@@ -5,29 +5,31 @@ describe('Torpedo', function () {
 	it('calculates impact location', function () {
 		var target_location = {longitude: 29.049588, latitude: 40.976345};
 		var destination_location = {longitude: 29.021666, latitude: 41.026785};
-		var destination_duration = 1; // h
+		var target_destination_duration = 1; // h
 		var source_location = {longitude: 29.060103, latitude: 41.001693};
 		var source_speed = 4.5; // km / h
 
-		var impact_location = torpedo.catches_at(
+		var impact = torpedo.catches_at(
 		  target_location,
 		  destination_location,
-		  destination_duration,
+		  target_destination_duration,
 		  source_location,
 		  source_speed
 		);
 
-		console.log(impact_location);
+		var torpedo_impact_distance = torpedo.distance_in_km(source_location, impact.location);
+		var torpedo_impact_duration = torpedo_impact_distance / source_speed;
 
-		var torpedo_travel_distance = torpedo.distance_in_km(source_location, impact_location);
-		var torpedo_travel_duration = torpedo_travel_distance / source_speed;
+		var diff = Math.abs(torpedo_impact_duration - impact.duration_before);
+		var max = Math.max(torpedo_impact_duration, impact.duration_before);
+		expect(diff / max).toBeLessThan(0.001);
 
-		var target_travel_distance = torpedo.distance_in_km(target_location, impact_location);
-		var target_speed = torpedo.distance_in_km(target_location, destination_location) / destination_duration;
-		var target_travel_duration = target_travel_distance / target_speed;
+		var target_impact_distance = torpedo.distance_in_km(target_location, impact.location);
+		var target_speed = torpedo.distance_in_km(target_location, destination_location) / target_destination_duration;
+		var target_impact_duration = target_impact_distance / target_speed;
 
-		var diff = Math.abs(torpedo_travel_duration - target_travel_duration);
-		var max = Math.max(torpedo_travel_duration, target_travel_duration);
+		var diff = Math.abs(torpedo_impact_duration - impact.duration_before);
+		var max = Math.max(torpedo_impact_duration, impact.duration_before);
 		expect(diff / max).toBeLessThan(0.001);
 	});	
 });

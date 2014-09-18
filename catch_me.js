@@ -1,7 +1,7 @@
 
 var turf = require('turf');
 
-exports.catches_at = function (target_location, dest_location, dest_duration, source_location, source_speed) {
+exports.catches_at = function (target_location, dest_location, target_destination_duration, source_location, source_speed) {
 	var tlon_slat = {latitude: source_location.latitude, longitude: target_location.longitude};
 	var tlat_slon = {latitude: target_location.latitude, longitude: source_location.longitude};
 
@@ -14,20 +14,29 @@ exports.catches_at = function (target_location, dest_location, dest_duration, so
 	var dlat_tlon = {latitude: dest_location.latitude, longitude: target_location.longitude};
 	var dlon_tlat = {latitude: target_location.latitude, longitude: dest_location.longitude};
 
-	var j_lon_dist = (distance_in_km(target_location, dlon_tlat) + distance_in_km(dlat_tlon, dest_location)) / 2;
-	var j_lat_dist = (distance_in_km(target_location, dlat_tlon) + distance_in_km(dlon_tlat, dest_location)) / 2;
+	var i_lon_dist = (distance_in_km(target_location, dlon_tlat) + distance_in_km(dlat_tlon, dest_location)) / 2;
+	var i_lat_dist = (distance_in_km(target_location, dlat_tlon) + distance_in_km(dlon_tlat, dest_location)) / 2;
 
-	if (target_location.longitude > dest_location.longitude) j_lon_dist *= -1;
-	if (target_location.latitude > dest_location.latitude) j_lat_dist *= -1;
+	if (target_location.longitude > dest_location.longitude) i_lon_dist *= -1;
+	if (target_location.latitude > dest_location.latitude) i_lat_dist *= -1;
 
-	var j_dist = distance_in_km(target_location, dest_location);
+	var i_dist = distance_in_km(target_location, dest_location);
 
-	var j_lon_speed = j_lon_dist / dest_duration;
-	var j_lat_speed = j_lat_dist / dest_duration;
+	var i_lon_speed = i_lon_dist / target_destination_duration;
+	var i_lat_speed = i_lat_dist / target_destination_duration;
 
-	var t = catch_time(t_lon_dist, t_lat_dist, j_lon_speed, j_lat_speed, source_speed);
+	var t = catch_time(t_lon_dist, t_lat_dist, i_lon_speed, i_lat_speed, source_speed);
 
-	return t && t < dest_duration ? midpoint_location(target_location, dest_location, j_dist * t / dest_duration) : null;
+	var impact_location = null;
+
+	if (t && t < target_destination_duration) {
+		impact_location = midpoint_location(target_location, dest_location, i_dist * t / target_destination_duration);
+	}
+
+	return {
+		location: impact_location,
+		duration_before: t
+	};
 };
 
 function distance_in_km (location1, location2) {

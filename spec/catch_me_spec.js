@@ -17,6 +17,8 @@ describe('Torpedo', function () {
 		  source_speed
 		);
 
+		console.log(impact);
+
 		expect(impact.location).not.toBeNull();
 		expect(impact.duration_before).not.toBeNull();
 

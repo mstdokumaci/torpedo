@@ -38,7 +38,7 @@ function distance_in_km (location1, location2) {
 
 	return turf.distance(point1, point2, 'kilometers');
 }
-exports.calculate_distance_in_km = distance_in_km;
+exports.distance_in_km = distance_in_km;
 
 function midpoint_location (from_location, to_location, distance) {
 	var point1 = turf.point(from_location.longitude, from_location.latitude);
@@ -53,7 +53,7 @@ function midpoint_location (from_location, to_location, distance) {
 		latitude: destination.geometry.coordinates[1]
 	};
 }
-exports.find_midpoint_location = midpoint_location;
+exports.midpoint_location = midpoint_location;
 
 function catch_time (x, y, vx, vy, v) {
 	var a = vx * vx + vy * vy - v * v;

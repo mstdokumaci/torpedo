@@ -7,7 +7,7 @@
   "name": "torpedo",
   "description": "calculates location of impact for a torpedo trying to catch a moving object",
   "main": "./catch_me",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "keywords": [
     "game",
     "auto aim",

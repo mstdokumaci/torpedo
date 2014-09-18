@@ -9,11 +9,11 @@ npm install torpedo
 ```
 
 ## How to use
-If we are able to catch the target object, function returns the impact location; otherwise it returns null.
+If we are able to catch the target object, function returns the impact json; otherwise it returns null.
 ```js
 var torpedo = require('torpedo');
 
-torpedo.catches_at(
+var impcat = torpedo.catches_at(
   {longitude: 29.049588, latitude: 40.976345}, // target location (B)
   {longitude: 29.021666, latitude: 41.026785}, // destination location (C)
   +new Date() + 3600 * 1000, // destination reaching time (T - GMT timestamp in microseconds)
@@ -21,5 +21,17 @@ torpedo.catches_at(
   4 // source speed (S - km / h)
 );
 
-// returns {latitude: 41.00353050364272, longitude: 29.034544732375366}
+// impact  is
+// {
+//		location: {longitude: 29.034545174320822, latitude: 41.003529705337094},
+//		duration_before: 0.5389347387955006
+//	}
+```
+
+returned impact json:
+```json
+{
+	"location": {"longitude": 29.034545174320822, "latitude": 41.003529705337094},
+	"duration_before": 0.5389347387955006
+}
 ```

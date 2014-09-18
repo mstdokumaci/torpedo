@@ -7,7 +7,7 @@ describe('Torpedo', function () {
 		var destination_location = {longitude: 29.021666, latitude: 41.026785};
 		var target_destination_duration = 1; // h
 		var source_location = {longitude: 29.060103, latitude: 41.001693};
-		var source_speed = 4.5; // km / h
+		var source_speed = 4.3; // km / h
 
 		var impact = torpedo.catches_at(
 		  target_location,
@@ -16,6 +16,8 @@ describe('Torpedo', function () {
 		  source_location,
 		  source_speed
 		);
+
+		console.log(impact.duration_before);
 
 		var torpedo_impact_distance = torpedo.distance_in_km(source_location, impact.location);
 		var torpedo_impact_duration = torpedo_impact_distance / source_speed;

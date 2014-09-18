@@ -22,7 +22,7 @@ var impcat = torpedo.catches_at(
 );
 ```
 
-Returned json includes both impact location and duration (in hours).:
+Returned json includes both impact location and duration (in hours):
 ```json
 {
 	"location": {"longitude": 29.034545174320822, "latitude": 41.003529705337094},

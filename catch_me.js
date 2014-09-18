@@ -78,9 +78,11 @@ function quad (a, b, c) {
 	if (Math.abs(a) < 1e-6) {
 		if (Math.abs(b) < 1e-6) {
 			sol = Math.abs(c) < 1e-6 ? [0,0] : null;
+			console.log('small b');
 		} else {
 			sol = [ -c / b, -c / b];
 		}
+		console.log('small a');
 	} else {
 		var disc = b * b - 4 * a * c;
 
@@ -91,6 +93,5 @@ function quad (a, b, c) {
 		}
 	}
 
-	console.log(sol);
 	return sol;
 }

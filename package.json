@@ -15,7 +15,9 @@
     "longitude",
     "latitude",
     "distance",
-    "catch"
+    "catch",
+    "torpedo",
+    "freight ship"
   ],
   "repository": {
     "type": "git",

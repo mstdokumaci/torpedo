@@ -83,7 +83,7 @@ function catch_time (x, y, vx, vy, v) {
 function quad (a, b, c) {
 	var sol = null;
 
-	console.log(a + ' ' + b  ' ' + c);
+	console.log(a + ' ' + b  + ' ' + c);
 
 	if (Math.abs(a) < 1e-6) {
 		if (Math.abs(b) < 1e-6) {

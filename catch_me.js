@@ -68,6 +68,7 @@ function catch_time (x, y, vx, vy, v) {
 		if (t > 0) time = t;
 	}
 
+	console.log(time);
 	return time;
 }
 
@@ -90,5 +91,6 @@ function quad (a, b, c) {
 		}
 	}
 
+	console.log(sol);
 	return sol;
 }

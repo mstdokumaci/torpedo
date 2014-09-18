@@ -26,6 +26,8 @@ describe('Torpedo', function () {
 		var target_speed = torpedo.distance_in_km(target_location, destination_location) / destination_duration;
 		var target_travel_duration = target_travel_distance / target_speed;
 
-		expect(torpedo_travel_duration).toEqual(target_travel_duration);
+		var diff = Math.abs(torpedo_travel_duration - target_travel_duration);
+		var max = Math.max(torpedo_travel_duration, target_travel_duration);
+		expect(diff / max).toBeLessThan(0.001);
 	});	
 });

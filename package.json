@@ -7,7 +7,7 @@
   "name": "torpedo",
   "description": "calculates location of impact for a torpedo trying to catch a moving object",
   "main": "./catch_me",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "keywords": [
     "location",
     "distance",
@@ -20,6 +20,10 @@
   "homepage": "https://github.com/mstdokumaci/torpedo",
   "dependencies": {
     "turf": "0.4.3"
+  },
+  "devDependencies": {
+    "karma": "~0.12.0",
+    "karma-jasmine": "~0.1.0"
   },
   "license": "GPLv2"
 }

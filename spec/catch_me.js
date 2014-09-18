@@ -1,8 +1,6 @@
 
 var torpedo = require('../catch_me');
 
-console.log('a');
-
 describe('Torpedo', function () {
 	it('calculates impact location', function () {
 		var target_location = {longitude: 29.049588, latitude: 40.976345};

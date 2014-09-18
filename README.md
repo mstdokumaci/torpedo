@@ -20,12 +20,6 @@ var impcat = torpedo.catches_at(
   {longitude: 29.060103, latitude: 41.001693}, // source location (A)
   4 // source speed (S - km / h)
 );
-
-// impact  is
-// {
-//		location: {longitude: 29.034545174320822, latitude: 41.003529705337094},
-//		duration_before: 0.5389347387955006
-//	}
 ```
 
 returned impact json:

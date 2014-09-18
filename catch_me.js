@@ -83,8 +83,6 @@ function catch_time (x, y, vx, vy, v) {
 function quad (a, b, c) {
 	var sol = null;
 
-	console.log(a + ' ' + b  + ' ' + c);
-
 	if (Math.abs(a) < 1e-6) {
 		if (Math.abs(b) < 1e-6) {
 			sol = Math.abs(c) < 1e-6 ? [0,0] : null;
@@ -93,8 +91,6 @@ function quad (a, b, c) {
 		}
 	} else {
 		var disc = b * b - 4 * a * c;
-
-		console.log(disc);
 
 		if (disc >= 0) {
 			disc = Math.sqrt(disc);

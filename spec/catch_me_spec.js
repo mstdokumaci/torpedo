@@ -17,6 +17,7 @@ describe('Torpedo', function () {
 		  source_speed
 		);
 
+		expect(impact.location).not.toBeNull();
 		console.log(impact.duration_before);
 
 		var torpedo_impact_distance = torpedo.distance_in_km(source_location, impact.location);

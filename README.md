@@ -1,7 +1,7 @@
 torpedo
 =======
 
-We start moving with contsant speed of S from location A, in order to catch a moving object with constant speed from location B to location C. The target object is going to arrive location C at the time of T. We won't be able to catch it before reaching destination if we are not fast enough.
+We start moving with contsant speed of S from location A, in order to catch a moving object with constant speed from location B to location C. The target object is going to arrive location C in D hours. We won't be able to catch it before reaching destination if we are not fast enough.
 
 ## How to install
 ```sh
@@ -16,9 +16,9 @@ var torpedo = require('torpedo');
 var impcat = torpedo.catches_at(
   {longitude: 29.049588, latitude: 40.976345}, // target location (B)
   {longitude: 29.021666, latitude: 41.026785}, // destination location (C)
-  +new Date() + 3600 * 1000, // destination reaching time (T - GMT timestamp in microseconds)
+  1, // target to destination duration (D in hours)
   {longitude: 29.060103, latitude: 41.001693}, // source location (A)
-  4 // source speed (S - km / h)
+  4 // source speed (S in km / h)
 );
 ```
 

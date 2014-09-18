@@ -5,16 +5,14 @@ describe('Torpedo', function () {
 	it('calculates impact location', function () {
 		var target_location = {longitude: 29.049588, latitude: 40.976345};
 		var destination_location = {longitude: 29.021666, latitude: 41.026785};
-		var now = +new Date();
 		var destination_duration = 1; // h
-		var destination_time = now + destination_duration * 3600 * 1000;
 		var source_location = {longitude: 29.060103, latitude: 41.001693};
 		var source_speed = 4; // km / h
 
 		var impact_location = torpedo.catches_at(
 		  target_location,
 		  destination_location,
-		  destination_time,
+		  destination_duration,
 		  source_location,
 		  source_speed
 		);

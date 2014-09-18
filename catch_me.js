@@ -1,7 +1,7 @@
 
 var turf = require('turf');
 
-exports.catches_at = function (target_location, dest_location, dest_time, source_location, source_speed) {
+exports.catches_at = function (target_location, dest_location, dest_duration, source_location, source_speed) {
 	var tlon_slat = {latitude: source_location.latitude, longitude: target_location.longitude};
 	var tlat_slon = {latitude: target_location.latitude, longitude: source_location.longitude};
 
@@ -22,14 +22,12 @@ exports.catches_at = function (target_location, dest_location, dest_time, source
 
 	var j_dist = distance_in_km(target_location, dest_location);
 
-	// convert target journey time to hours because source speed is in km / h
-	var j_time = (dest_time - new Date()) / 1000 / 3600;
-	var j_lon_speed = j_lon_dist / j_time;
-	var j_lat_speed = j_lat_dist / j_time;
+	var j_lon_speed = j_lon_dist / dest_duration;
+	var j_lat_speed = j_lat_dist / dest_duration;
 
 	var t = catch_time(t_lon_dist, t_lat_dist, j_lon_speed, j_lat_speed, source_speed);
 
-	return t && t < j_time ? midpoint_location(target_location, dest_location, j_dist * t / j_time) : null;
+	return t && t < dest_duration ? midpoint_location(target_location, dest_location, j_dist * t / dest_duration) : null;
 };
 
 function distance_in_km (location1, location2) {

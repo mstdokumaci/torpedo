@@ -1,5 +1,5 @@
 
-var torpedo = require('..');
+var torpedo = require('../catch_me');
 
 describe('Torpedo', function () {
 	it('calculates impact location', function () {
@@ -18,8 +18,6 @@ describe('Torpedo', function () {
 		  source_location,
 		  source_speed
 		);
-
-		console.log(impact_location);
 
 		var torpedo_travel_distance = torpedo.distance_in_km(source_location, impact_location);
 		var torpedo_travel_duration = torpedo_travel_distance / source_speed;

@@ -1,7 +1,7 @@
 
 var turf = require('turf');
 
-exports.catches_at = function (target_location, dest_location, target_destination_duration, source_location, source_speed) {
+exports.impact = function (target_location, dest_location, target_destination_duration, source_location, source_speed) {
 	var tlon_slat = {latitude: source_location.latitude, longitude: target_location.longitude};
 	var tlat_slon = {latitude: target_location.latitude, longitude: source_location.longitude};
 

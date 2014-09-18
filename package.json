@@ -9,7 +9,11 @@
   "main": "./catch_me",
   "version": "0.0.7",
   "keywords": [
+    "game",
+    "auto aim",
     "location",
+    "longitude",
+    "latitude",
     "distance",
     "catch"
   ],

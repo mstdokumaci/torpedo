@@ -7,7 +7,7 @@ describe('Torpedo', function () {
 		var destination_location = {longitude: 29.021666, latitude: 41.026785};
 		var target_destination_duration = 1; // h
 		var source_location = {longitude: 29.060103, latitude: 41.001693};
-		var source_speed = 3.9; // km / h
+		var source_speed = 4; // km / h
 
 		var impact = torpedo.catches_at(
 		  target_location,

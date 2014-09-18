@@ -24,5 +24,8 @@
   "devDependencies": {
     "jasmine-node": "1.14.x"
   },
+  "scripts" : {
+    "test" : "jasmine-node spec"
+  },
   "license": "GPLv2"
 }

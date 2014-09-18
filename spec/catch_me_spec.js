@@ -24,15 +24,15 @@ describe('Torpedo', function () {
 		var torpedo_impact_duration = torpedo_impact_distance / source_speed;
 
 		var diff = Math.abs(torpedo_impact_duration - impact.duration);
-		var max = Math.max(torpedo_impact_duration, impact.duration);
-		expect(diff / max).toBeLessThan(0.001);
+		var min = Math.min(torpedo_impact_duration, impact.duration);
+		expect(diff / min).toBeLessThan(1e-3);
 
 		var target_impact_distance = torpedo.distance_in_km(target_location, impact.location);
 		var target_speed = torpedo.distance_in_km(target_location, destination_location) / target_destination_duration;
 		var target_impact_duration = target_impact_distance / target_speed;
 
 		var diff = Math.abs(target_impact_duration - impact.duration);
-		var max = Math.max(target_impact_duration, impact.duration);
-		expect(diff / max).toBeLessThan(0.001);
+		var min = Math.min(target_impact_duration, impact.duration);
+		expect(diff / min).toBeLessThan(1e-3);
 	});	
 });

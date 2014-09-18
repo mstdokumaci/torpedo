@@ -35,7 +35,7 @@ exports.catches_at = function (target_location, dest_location, target_destinatio
 
 	return {
 		location: impact_location,
-		duration_before: t
+		duration: t
 	};
 };
 

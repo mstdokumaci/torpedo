@@ -26,6 +26,6 @@ returned impact json:
 ```json
 {
 	"location": {"longitude": 29.034545174320822, "latitude": 41.003529705337094},
-	"duration_before": 0.5389347387955006
+	"duration": 0.5389347387955006 // in hours
 }
 ```

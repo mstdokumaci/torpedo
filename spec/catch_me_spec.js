@@ -18,21 +18,21 @@ describe('Torpedo', function () {
 		);
 
 		expect(impact.location).not.toBeNull();
-		expect(impact.duration_before).not.toBeNull();
+		expect(impact.duration).not.toBeNull();
 
 		var torpedo_impact_distance = torpedo.distance_in_km(source_location, impact.location);
 		var torpedo_impact_duration = torpedo_impact_distance / source_speed;
 
-		var diff = Math.abs(torpedo_impact_duration - impact.duration_before);
-		var max = Math.max(torpedo_impact_duration, impact.duration_before);
+		var diff = Math.abs(torpedo_impact_duration - impact.duration);
+		var max = Math.max(torpedo_impact_duration, impact.duration);
 		expect(diff / max).toBeLessThan(0.001);
 
 		var target_impact_distance = torpedo.distance_in_km(target_location, impact.location);
 		var target_speed = torpedo.distance_in_km(target_location, destination_location) / target_destination_duration;
 		var target_impact_duration = target_impact_distance / target_speed;
 
-		var diff = Math.abs(torpedo_impact_duration - impact.duration_before);
-		var max = Math.max(torpedo_impact_duration, impact.duration_before);
+		var diff = Math.abs(target_impact_duration - impact.duration);
+		var max = Math.max(target_impact_duration, impact.duration);
 		expect(diff / max).toBeLessThan(0.001);
 	});	
 });

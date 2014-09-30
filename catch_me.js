@@ -1,6 +1,12 @@
 
 var turf = require('turf');
 
+var accuracy = 5;
+
+exports.accuracy = function (acc) {
+	accuracy = acc;
+}
+
 exports.impact = function (target_location, dest_location, target_destination_duration, source_location, source_speed) {
 	var tlon_slat = {latitude: source_location.latitude, longitude: target_location.longitude};
 	var tlat_slon = {latitude: target_location.latitude, longitude: source_location.longitude};
@@ -20,8 +26,6 @@ exports.impact = function (target_location, dest_location, target_destination_du
 	if (target_location.longitude > dest_location.longitude) i_lon_dist *= -1;
 	if (target_location.latitude > dest_location.latitude) i_lat_dist *= -1;
 
-	var i_dist = distance_in_km(target_location, dest_location);
-
 	var i_lon_speed = i_lon_dist / target_destination_duration;
 	var i_lat_speed = i_lat_dist / target_destination_duration;
 
@@ -30,7 +34,7 @@ exports.impact = function (target_location, dest_location, target_destination_du
 	var impact_location = null;
 
 	if (t && t < target_destination_duration) {
-		impact_location = midpoint_location(target_location, dest_location, i_dist * t / target_destination_duration);
+		impact_location = midpoint_location(target_location, dest_location, t / target_destination_duration);
 	}
 
 	return {
@@ -47,18 +51,43 @@ function distance_in_km (location1, location2) {
 }
 exports.distance_in_km = distance_in_km;
 
-function midpoint_location (from_location, to_location, distance) {
+function midpoint_location (from_location, to_location, ratio) {
 	var point1 = turf.point(from_location.longitude, from_location.latitude);
 	var point2 = turf.point(to_location.longitude, to_location.latitude);
 
-	var bearing = turf.bearing(point1, point2);
+	var distance = distance_in_km(from_location, to_location);
+	var midpoint;
 
-	var destination = turf.destination(point1, distance, bearing, 'kilometers');
+	if (ratio == 0.5 || distance > 5 / accuracy) {
+		midpoint = turf.midpoint(point1, point2);
+		midpoint = {
+			longitude: midpoint.geometry.coordinates[0],
+			latitude: midpoint.geometry.coordinates[1]
+		};
 
-	return {
-		longitude: destination.geometry.coordinates[0],
-		latitude: destination.geometry.coordinates[1]
-	};
+		if (ratio == 0.5)
+			return midpoint
+		else if (ratio < 0.5)
+			return midpoint_location(from_location, midpoint, ratio  * 2);
+		else
+			return midpoint_location(to_location, midpoint, (1 - ratio) * 2);
+	} else {
+		if (ratio > 0.5) {
+			var swap = point1;
+			point1 = point2;
+			point2 = swap;
+			ratio = 1 - ratio;
+		}
+
+		var bearing = turf.bearing(point1, point2);
+
+		var destination = turf.destination(point1, ratio * distance, bearing, 'kilometers');
+
+		return {
+			longitude: destination.geometry.coordinates[0],
+			latitude: destination.geometry.coordinates[1]
+		};
+	}
 }
 exports.midpoint_location = midpoint_location;
 

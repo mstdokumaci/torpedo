@@ -33,3 +33,10 @@ Returned json includes both impact location (in longitude and latitude) and dura
 	"duration": 0.5389347387955006
 }
 ```
+
+## Accuracy
+You can set accuracy for calculations. Bigger the number, more accurate the result.
+
+```js
+torpedo.accuracy(1); // default is 5 this is less accurate
+```

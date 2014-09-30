@@ -38,5 +38,5 @@ Returned json includes both impact location (in longitude and latitude) and dura
 You can set accuracy for calculations. Bigger the number, more accurate the result.
 
 ```js
-torpedo.accuracy(1); // default is 5 this is less accurate
+torpedo.accuracy(1); // default is 5, so this is less accurate
 ```

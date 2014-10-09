@@ -7,7 +7,7 @@
   "name": "torpedo",
   "description": "calculates location of impact for a torpedo trying to catch a big fat freight ship moving with a constant speed",
   "main": "./catch_me",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "keywords": [
     "game",
     "auto aim",

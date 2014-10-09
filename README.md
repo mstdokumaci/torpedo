@@ -3,6 +3,8 @@ torpedo
 
 Consider yourself in a U-Boat, which has a big fat freight ship on target. In order to hit the target for sure, you should do some calculations, which is covered by this library for any known location on earth. This library is useful if you are developing a game for longitude - latitude coordinates. It helps you auto-aiming any kind of projectile.
 
+[![Build Status](https://travis-ci.org/mstdokumaci/torpedo.svg?branch=master)](https://travis-ci.org/mstdokumaci/torpedo)
+
 ## How to install
 ```sh
 npm install torpedo

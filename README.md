@@ -17,7 +17,7 @@ Our torpedo starts moving from source location of A to catch that big fat freigh
 ```js
 var torpedo = require('torpedo');
 
-var impcat = torpedo.impact(
+var impact = torpedo.impact(
   {longitude: 29.049588, latitude: 40.976345}, // target location (B)
   {longitude: 29.021666, latitude: 41.026785}, // destination location (C)
   1, // target to destination duration (D in hours)
